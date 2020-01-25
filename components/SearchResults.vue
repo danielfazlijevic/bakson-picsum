@@ -32,13 +32,16 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="postcss" scoped>
 .search-results {
   position: absolute;
   top: 70px;
   z-index: 10;
   padding: 15px;
   background: rgba(255, 255, 255, 0.98);
-  width: 80%;
+  width: 100%;
+  @screen lg {
+    width: 80%;
+  }
 }
 </style>

@@ -51,6 +51,8 @@ export default {
     }
   },
   created() {
+    // Generate random dummy date values for each component
+    // we use en-GB as region because of the 24hr time format and DD-MM-YYYY date format
     const randomDate = this.randomDate()
     this.month = randomDate.toLocaleString('en-GB', { month: 'short' })
     this.day = randomDate.toLocaleString('en-GB', { day: 'numeric' })
@@ -59,6 +61,7 @@ export default {
     this.dayName = randomDate.toLocaleString('en-GB', { weekday: 'short' })
   },
   methods: {
+    // get random date in period
     // set default dates for start and end
     randomDate(start = new Date(), end = new Date(2020, 12, 12)) {
       return new Date(
