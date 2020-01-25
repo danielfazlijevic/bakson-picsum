@@ -2,10 +2,13 @@
   <div>
     <div v-if="tickets">
       <transition name="fade">
-        <EventsList v-if="viewType === 'list' && tickets" :tickets="tickets" />
+        <EventsList
+          v-if="viewType === 'list' && tickets"
+          :tickets="selectedTickets"
+        />
         <HotTicketsGrid
           v-if="viewType === 'grid' && tickets"
-          :tickets="tickets"
+          :tickets="selectedTickets"
         />
       </transition>
     </div>
@@ -27,6 +30,38 @@ export default {
     viewType: {
       type: String,
       default: ''
+    },
+    sort: {
+      type: Boolean,
+      default: true
+    }
+  },
+  data() {
+    return {
+      sorting: false,
+      sortedTickets: []
+    }
+  },
+  computed: {
+    selectedTickets() {
+      return this.sorting ? this.sortedTickets : this.tickets
+    }
+  },
+  watch: {
+    sort(newValue, oldValue) {
+      const toSort = [...this.tickets]
+      this.sortedTickets = toSort.sort((a, b) => {
+        return this.sortAsc
+          ? this.sumPixels(a) - this.sumPixels(b)
+          : this.sumPixels(b) - this.sumPixels(a)
+      })
+      this.sorting = true
+      this.sortAsc = !this.sortAsc
+    }
+  },
+  methods: {
+    sumPixels(item) {
+      return item.width + item.height
     }
   }
 }

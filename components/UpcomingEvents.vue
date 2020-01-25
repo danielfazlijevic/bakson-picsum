@@ -3,10 +3,15 @@
     <div class="section-header flex flex-wrap items-center">
       <h2 class="font-bold text-2xl">Upcoming Events</h2>
       <ChangeViewType :viewType="viewType" @changeViewType="changeViewType" />
+      <v-icon
+        @click.native="sortAsc = !sortAsc"
+        class="ml-4 h-8 w-8 hover:text-pink-500 cursor-pointer"
+        name="layers"
+      />
     </div>
 
     <hr />
-    <DynamicView :tickets="tickets" :viewType="viewType" />
+    <DynamicView :sort="sortAsc" :tickets="tickets" :viewType="viewType" />
   </section>
 </template>
 
@@ -22,7 +27,8 @@ export default {
   },
   data() {
     return {
-      viewType: 'list'
+      viewType: 'list',
+      sortAsc: true
     }
   },
   computed: {

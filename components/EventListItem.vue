@@ -23,9 +23,12 @@
       </div>
     </div>
     <div class="w-full lg:w-1/2 flex justify-end items-center p-3">
-      <a :href="ticket.url" class="bg-pink-500 text-white p-3" target="_blank"
-        >Find pics ></a
-      >
+      <a
+        :href="ticket.url"
+        class="bg-pink-500 text-white hover:bg-pink-600 p-3 flex items-center"
+        target="_blank"
+        ><span>Find pics</span> <v-icon name="chevron-right" class="h-6 w-6"
+      /></a>
     </div>
   </div>
 </template>
