@@ -1,7 +1,7 @@
 <template>
   <div class="hot-tickets-grid">
     <EventListItem
-      v-for="ticket in tickets.slice(start_index, start_index + limit)"
+      v-for="ticket in tickets.slice(0, limit)"
       :key="ticket.download_url"
       :ticket="ticket"
     />
@@ -10,7 +10,7 @@
 
 <script>
 import EventListItem from '@/components/EventListItem.vue'
-import { HOT_TICKETS_LIMIT, UPCOMING_EVENTS_LIMIT } from '@/static/config'
+import { UPCOMING_EVENTS_LIMIT } from '@/static/config'
 
 export default {
   components: {
@@ -24,7 +24,6 @@ export default {
   },
   data() {
     return {
-      start_index: HOT_TICKETS_LIMIT,
       limit: UPCOMING_EVENTS_LIMIT
     }
   }

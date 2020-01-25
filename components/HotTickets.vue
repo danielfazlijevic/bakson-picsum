@@ -1,21 +1,36 @@
 <template>
   <section class="container mx-auto block hot-tickets px-4">
-    <h2 class="font-bold text-2xl">Hot Tickets</h2>
+    <div class="flex items-center">
+      <h2 class="font-bold text-2xl">Hot Tickets</h2>
+      <ChangeViewType :viewType="viewType" @changeViewType="changeViewType" />
+    </div>
     <hr />
-    <HotTicketsGrid v-if="tickets" :tickets="tickets" />
+    <DynamicView :tickets="tickets" :viewType="viewType" />
   </section>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
-import HotTicketsGrid from '@/components/HotTicketsGrid.vue'
+import ChangeViewType from '@/components/ChangeViewType.vue'
+import DynamicView from '@/components/DynamicView.vue'
 
 export default {
   components: {
-    HotTicketsGrid
+    ChangeViewType,
+    DynamicView
+  },
+  data() {
+    return {
+      viewType: 'grid'
+    }
   },
   computed: {
     ...mapGetters({ tickets: 'events/getTickets' })
+  },
+  methods: {
+    changeViewType(value) {
+      this.viewType = value
+    }
   }
 }
 </script>
