@@ -18,6 +18,7 @@
 
 <script>
 export default {
+  // lazy loading
   components: {
     HotTicketsGrid: () => import('@/components/HotTicketsGrid'),
     EventsList: () => import('@/components/EventsList')

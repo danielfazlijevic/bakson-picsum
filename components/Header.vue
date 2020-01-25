@@ -6,11 +6,16 @@
       type="text"
       placeholder="Search for an artist, event or venue"
     />
+    <SearchResults v-if="search" :search="search" />
   </header>
 </template>
 
 <script>
 export default {
+  components: {
+    // lazy load - only if searching
+    SearchResults: () => import('@/components/SearchResults')
+  },
   data() {
     return {
       search: ''
