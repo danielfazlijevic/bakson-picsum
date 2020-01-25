@@ -1,6 +1,7 @@
 <template>
   <div class="search-results shadow-xl border border-gray-400">
-    <EventsList v-if="searchMatches" :tickets="searchMatches" />
+    <EventsList v-if="searchMatches.length > 0" :tickets="searchMatches" />
+    <div v-else>No results ...</div>
   </div>
 </template>
 
