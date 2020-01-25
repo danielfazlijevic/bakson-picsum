@@ -17,7 +17,6 @@ export default {
   },
   methods: {
     changeViewType() {
-      console.log('test')
       const newType = this.viewType === 'grid' ? 'list' : 'grid'
       this.$emit('changeViewType', newType)
     }

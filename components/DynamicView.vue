@@ -18,7 +18,7 @@
 
 <script>
 export default {
-  // lazy loading
+  // lazy loading - only load components if needed depending on view type
   components: {
     HotTicketsGrid: () => import('@/components/HotTicketsGrid'),
     EventsList: () => import('@/components/EventsList')
@@ -49,6 +49,7 @@ export default {
     }
   },
   watch: {
+    // sort tickets based on sum of width and height
     sort(newValue, oldValue) {
       const toSort = [...this.tickets]
       this.sortedTickets = toSort.sort((a, b) => {
